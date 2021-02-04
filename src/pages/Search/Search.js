@@ -1,28 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import ResultGrid from "../../components/ResultsGrid/ResultsGrid";
 import "./Search.css";
 
 const Search = (props) => {
   const [input, setInput] = useState("");
-  const [response, setResponse] = useState("");
-  const [test, setTest] = useState(["a", "b", "c"]);
+  const [response, setResponse] = useState([]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    alert(`${input}`);
-    setResponse(getDataFromBackend());
+    // alert(`${input}`);
+    getDataFromBackend(input);
   };
 
   const getDataFromBackend = (product) => {
-    // axios({
-    //   method: "post",
-    //   url: "/login",
-    //   data: {
-    //     product: product,
-    //   },
-    // });
-    return "test";
+    console.log("in function");
+    axios({
+      method: "post",
+      url: "http://localhost:5000/shoppy/getShoppyLinks",
+      data: {
+        product: product,
+      },
+    }).then((res) => {
+      console.log(res);
+      let links = res.data.shoppyLinks;
+      console.log(links);
+      setResponse(links);
+    });
+    // return "test";
   };
 
   return (
@@ -38,8 +43,7 @@ const Search = (props) => {
         </label>
         <input type='submit' value='Submit' />
       </form>
-      <h1>{response}</h1>
-      <ResultGrid resultGrid={test} />
+      <ResultGrid resultGrid={response} />
     </div>
   );
 };

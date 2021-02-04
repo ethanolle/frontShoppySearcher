@@ -8,6 +8,7 @@ import {
 import "./App.css";
 import Search from "./pages/Search/Search";
 import Term from "./pages/Term/Term";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         </Route>
         <Redirect to='/' />
       </Switch>
+      <Footer />
     </Router>
   );
 }

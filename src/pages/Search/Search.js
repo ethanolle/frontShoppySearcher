@@ -6,6 +6,7 @@ import "./Search.css";
 const Search = (props) => {
   const [input, setInput] = useState("");
   const [response, setResponse] = useState("");
+  const [test, setTest] = useState(["a", "b", "c"]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -38,7 +39,7 @@ const Search = (props) => {
         <input type='submit' value='Submit' />
       </form>
       <h1>{response}</h1>
-      <ResultGrid />
+      <ResultGrid resultGrid={test} />
     </div>
   );
 };

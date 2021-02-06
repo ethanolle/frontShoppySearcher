@@ -14,7 +14,6 @@ const Search = (props) => {
   };
 
   const getDataFromBackend = (product) => {
-    console.log("in function");
     axios({
       method: "post",
       url: "http://localhost:5000/shoppy/getShoppyLinks",
@@ -22,26 +21,22 @@ const Search = (props) => {
         product: product,
       },
     }).then((res) => {
-      console.log(res);
       let links = res.data.shoppyLinks;
-      console.log(links);
       setResponse(links);
     });
-    // return "test";
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>
-          Enter Product
-          <input
-            type='text'
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-        </label>
-        <input type='submit' value='Submit' />
+        <label className='textSearch'>Enter Product</label>
+        <input
+          className='inputText'
+          type='text'
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <input className='searchButton' type='submit' value='Submit' />
       </form>
       <ResultGrid resultGrid={response} />
     </div>

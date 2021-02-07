@@ -1,11 +1,11 @@
-import React from "react";
-import Card from "../sharedComponent/Card";
+import React from 'react';
+import Card from '../sharedComponent/Card';
 
-import "./ResultsGrid.css";
+import './ResultsGrid.css';
 const ResultGrid = ({ resultGrid = [] }) => {
   const openInNewTab = (url) => {
-    console.log("inFunction");
-    var win = window.open(url, "_blank");
+    console.log('inFunction');
+    var win = window.open(url, '_blank');
   };
   const handleOpenAll = () => {
     resultGrid.forEach((result) => {
@@ -14,9 +14,11 @@ const ResultGrid = ({ resultGrid = [] }) => {
   };
   return (
     <div className='result'>
-      <button className='openAllButton' onClick={handleOpenAll}>
-        Open All
-      </button>
+      <div class='btn'>
+        <button className='openAllButton' onClick={handleOpenAll}>
+          Open All
+        </button>
+      </div>
       <Card>
         <table>
           <tr>
@@ -26,7 +28,7 @@ const ResultGrid = ({ resultGrid = [] }) => {
             // <div className='result'>
             <tr>
               <td>
-                <a href={result} target='_blank'>
+                <a href={result} target='_blank' rel='noreferrer'>
                   {result}
                 </a>
               </td>

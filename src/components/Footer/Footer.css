@@ -1,0 +1,22 @@
+html, body {
+    height: 100%;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+.footer {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0 ; right: 0; bottom: 0; 
+    height:[footer-height];
+    background-color:#4caf50;
+    color: white;
+  }
+
+  .footer>h3{
+      margin: 0px 30px
+  }

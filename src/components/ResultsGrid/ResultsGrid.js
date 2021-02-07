@@ -3,14 +3,13 @@ import Card from '../sharedComponent/Card';
 
 import './ResultsGrid.css';
 const ResultGrid = ({ resultGrid = [] }) => {
-  const openInNewTab = (url) => {
-    console.log('inFunction');
-    var win = window.open(url, '_blank');
-  };
-  const handleOpenAll = () => {
-    resultGrid.forEach((result) => {
-      openInNewTab(result);
-    });
+  const timer = (ms) => new Promise((res) => setTimeout(res, ms));
+
+  const handleOpenAll = async () => {
+    for (const result of resultGrid) {
+      await timer(500);
+      window.open(result, '_blank');
+    }
   };
   return (
     <div className='result'>
